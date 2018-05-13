@@ -12,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class StartClient {
     public static void main(String[] args) throws Exception {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-client.xml");
-        ClientUtil clientUtil = new ClientUtil();
+        ClientUtil clientUtil = (ClientUtil) context.getBean("clientUtil");
         DemoService demoService = clientUtil.build(DemoService.class, "");
         String word = demoService.say("folk you");
         System.out.println(word);
@@ -23,6 +23,5 @@ public class StartClient {
 
         System.exit(0);
     }
-
 
 }

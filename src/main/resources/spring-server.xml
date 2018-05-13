@@ -8,8 +8,13 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.bug1024.rpc"/>
+    <context:property-placeholder location="classpath:filter.properties"/>
 
-    <bean id="serviceRegistry" class="com.bug1024.rpc.registers.Register"></bean>
+    <bean id="serviceRegistry" class="com.bug1024.rpc.registers.Register">
+        <constructor-arg name="zkAddress" value="${register.address}"/>
+        <constructor-arg name="zkSessionTime" value="${register.sessionTime}"/>
+        <constructor-arg name="zkConnectionTime" value="${register.connectionTime}"/>
+    </bean>
 
     <bean id="rpcServer" class="com.bug1024.rpc.server.Server">
         <constructor-arg name="serviceAddress" value="127.0.0.1:8080"/>

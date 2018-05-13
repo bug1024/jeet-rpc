@@ -8,4 +8,5 @@ public class CommonConstant {
 
     public static final String HOST_PORT_SEPARATOR = ":";
     public static final String SERVICE_VERSION_SEPARATOR = "-";
+    public static final String ZK_BASE_PATH = "/register";
 }
